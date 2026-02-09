@@ -1,4 +1,4 @@
-import char from "../../public/hi.png"
+import char from "../../../public/hi.png"
 
 function HeroImg() {
   return (
