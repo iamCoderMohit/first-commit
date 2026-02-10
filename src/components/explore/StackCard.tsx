@@ -9,10 +9,11 @@ interface Input {
   version: string;
   desc: string;
   isInv?: boolean;
-  setActive: React.Dispatch<React.SetStateAction<string>>
+  setActive: React.Dispatch<React.SetStateAction<string>>;
+  setShowSideBar?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function StackCard({name, logo, category, version, desc, isInv, setActive}: Input) {
+function StackCard({name, logo, category, version, desc, isInv, setActive, setShowSideBar}: Input) {
   const [isDesc, setIsDesc] = useState(false)
   const timerRef = useRef<NodeJS.Timeout>(null)
   return (
@@ -31,7 +32,8 @@ function StackCard({name, logo, category, version, desc, isInv, setActive}: Inpu
     }} 
     onClick={() => {
       setActive(name),
-      document.getElementById("main")?.scrollIntoView()
+      document.getElementById("main")?.scrollIntoView(),
+      setShowSideBar(false)
     }}
     >
       <div className="flex gap-2">
@@ -42,7 +44,7 @@ function StackCard({name, logo, category, version, desc, isInv, setActive}: Inpu
         </div>
       </div>
       <div className="absolute right-2 top-2 bg-gray-800 px-3 rounded-md text-sm">{category}</div>
-      <div className={`absolute bg-black p-2 rounded-md right-0 -top-15 w-2/3 ${isDesc ? "" : "hidden"}`}>{desc}</div>
+      <div className={`absolute bg-black p-2 rounded-md right-0 -top-10 w-2/3 z-10 ${isDesc ? "" : "hidden"}`}>{desc}</div>
     </div>
   )
 }

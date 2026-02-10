@@ -1,12 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html, body{
   height: 100%;
   scroll-behavior: smooth;
 }
 
-
 .great-vibes {
   font-family: 'Great-Vibes', cursive;
+}
+
+/* globals.css */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
